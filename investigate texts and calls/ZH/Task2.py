@@ -23,3 +23,25 @@ September 2016.".
 如果键不存在于字典内，将此键加入字典，并将它的值设为给定值。
 """
 
+phone_dict = {}
+longest_time = 0
+longest_phone_list = []
+
+# creat a telephone dictionary with time spent
+for call in calls:
+    for i in range(2):
+        if call[i] in phone_dict:
+            phone_dict[call[i]] += int(call[3])
+        else:
+            phone_dict[call[i]] = int(call[3])
+
+# get the longest time spend and phone list
+for phone in phone_dict:
+    if phone_dict[phone] > longest_time:
+        longest_time = phone_dict[phone]
+        longest_phone_list = []
+        longest_phone_list.append(phone)
+    elif phone_dict[phone] == longest_time:
+        longest_phone_list.append(phone)
+
+print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(longest_phone_list, longest_time))
