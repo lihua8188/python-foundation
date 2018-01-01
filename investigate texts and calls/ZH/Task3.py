@@ -29,7 +29,24 @@ with open('calls.csv', 'r') as f:
 "The numbers called by people in Bangalore have codes:"
  <list of codes>
 代号不能重复，每行打印一条，按字典顺序排序后输出。
+"""
+# get code list
+codes_list = []
+for call in calls:
+    if call[0][:5] == "(080)":
+        if call[1][0] == "(" and call[1][:(call[1].index(")")+1)] not in codes_list:
+            codes_list.append(call[1][:(call[1].index(")")+1)])
+        elif " " in call[1] and call[1][:4] not in codes_list:
+            codes_list.append(call[1][:4])
+        elif call[1][:3] == "140" and call[1][:3] not in codes_list:
+            codes_list.append(call[1][:3])
 
+codes_list = sorted(codes_list)
+print("The numbers called by people in Bangalore have codes:")
+for code in codes_list:
+    print(code)
+
+"""
 第二部分: 由班加罗尔固话打往班加罗尔的电话所占比例是多少？
 换句话说，所有由（080）开头的号码拨出的通话中，
 打往由（080）开头的号码所占的比例是多少？
@@ -39,3 +56,13 @@ with open('calls.csv', 'r') as f:
 to other fixed lines in Bangalore."
 注意：百分比应包含2位小数。
 """
+total_calls_number = 0
+calls_to_bangalore = 0
+for call in calls:
+    if call[0][:5] == "(080)":
+        total_calls_number += 1
+        if call[1][:5] == "(080)":
+            calls_to_bangalore += 1
+
+the_rate = round(calls_to_bangalore/total_calls_number, 4)*100
+print("{}% percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore".format(the_rate))
