@@ -1,0 +1,15 @@
+战争 category top 3 locations are:
+1. 美国: 24.68%
+2. 日本: 16.88%
+3. 英国: 16.88%
+
+科幻 category top 3 locations are:
+1. 英国: 40.86%
+2. 日本: 32.26%
+3. 美国: 20.43%
+
+剧情 category top 3 locations are:
+1. 英国: 25.07%
+2. 日本: 22.42%
+3. 美国: 11.50%
+
